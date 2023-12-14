@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#saveRecord').click(function() {
+                let name = $('#name').val();
+                let course = $('#course').val();
+                let section = $('#section').val();
+                $('#recordTable').append('<tr><td>' + name + '</td><td>' + course + '</td><td>' + section + '</td><td><button class="btn btn-danger deleteRecord">DELETE</button></td></tr>');
+            
+			$('#name, #course, #section').val('');
+			});
+			       
+
+            $(document).on('click', '.deleteRecord', function() {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Record Form</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="course">Course</label>
+                <input type="text" id="course" placeholder="Enter course">
+            </div>
+            <div class="form-group">
+                <label for="section">Section</label>
+                <input type="text" id="section" placeholder="Enter section">
+            </div>
+            <button type="button" id="saveRecord">Save Record</button>
+        </form>
+        <div class="table-responsive">
+            <table class="table" id="recordTable">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Section</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
